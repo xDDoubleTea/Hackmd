@@ -50,7 +50,7 @@ $(f^{-1}\circ{f})(x)=x$
 
 極限的嚴格定義
 
-$\forall\epsilon>0,\exists 1\ \delta>0,s.t$
+$\forall\varepsilon>0,\exists 1\ \delta>0,s.t$
 $0<|x-c|<\delta\implies|f(x)-l|<\varepsilon$
 $\iff\displaystyle\lim_{x\to{c}}f(x)=l$
 
@@ -102,7 +102,8 @@ $Given\ \varepsilon>0
 2. $\dfrac{\infty}{\infty}$型
 3. $0\cdot\infty$型
 4. $1^{\infty}$型
-5. $0^{\infty}$型
+5. $\infty^{0}$型
+6. $\infty-\infty$型
 
 不定型的例子：
 
@@ -110,7 +111,8 @@ $Given\ \varepsilon>0
 2. $\displaystyle\lim_{x\to{0}}|\dfrac{\ln|{x|}}{\cot{x}}|$
 3. $\displaystyle\lim_{x\to{0}}\sin{x}\ln{|x|}$
 4. $\displaystyle\lim_{x\to{0}}(\dfrac{\sin{x}}{x})^{\ln|x|}$
-5. $\displaystyle\lim_{x\to{0}}x^{\frac{1}{x}}$
+5. $\displaystyle\lim_{x\to{0}}(\dfrac{1}{x})^x$
+6. $\displaystyle\lim_{x\to{0}}(\ln{x}-\log_{3}x)$
 
 如何解不定型？
 
@@ -190,53 +192,52 @@ $\displaystyle\lim_{h\to 0}\dfrac{h}{h(\displaystyle\sum^{n-1}_{k=0}\sqrt[n]{(x+
 
 故冪法則對於有理數次方成立
 
+而對於無理數次方則需使用$\exp(x)$函數  
+$f(x)=x^q,q\in\mathbb{Q}^c$  
+則$f'(x)=(x^q)'=(e^{q\ln{x}})'=\dfrac{qe^{q\ln{x}}}{x}=qx^{q-1}$
+
+因此冪法則對於實數次方皆成立
+
 ### 指對數微積分
 
-### 什麼是$e$?
+先定義$e$
 
-在算銀行複利時，常出現這樣的關係式
-$設存款=S, 本金=a, 利率=t
-\\\to S=\displaystyle\lim_{n\to\infty}a(1+t)^n$
-$當利率趨近0時，存n期，總是會趨近某個常數$
-$於是定a=1時來研究$
-$n\in\mathbb{N},\displaystyle\lim_{n\to\infty}(1+\cfrac{1}{n})^n
-\\=\displaystyle\lim_{n\to\infty}\displaystyle\sum_{i=0}^n(1)^{n-i}(\cfrac{1}{n})^{i}\overset{set}{=}e$
+$n\in\mathbb{N},\displaystyle\lim_{n\to\infty}(1+\cfrac{1}{n})^n\overset{def}{=}e$
 
-推廣：$t\in\mathbb{R},\displaystyle\lim_{t\to\infty}(1+\dfrac{1}{t})^t=e$
-證明：
-> 利用夾擠定理
+推廣1：$t\in\mathbb{R^+},\displaystyle\lim_{t\to\infty}(1+\dfrac{1}{t})^t=e$  
+推廣2：$x\in\mathbb{R},\displaystyle\lim_{x\to{0}}(1+x)^\frac{1}{x}=e$  
+推廣3：$\displaystyle\lim_{x\to{\infty}}(1+\dfrac{a}{x})^{bx}=e^{ab}$  
+推廣4：$\displaystyle\lim_{h\to{0}}\dfrac{e^h-1}{h}=1$  
 
-為了等等說明方便，這邊附上另一定義
-$\displaystyle\lim_{t\to{0}}(1+t)^{\frac{1}{t}}$
+證明：  
+1:  
+$\because\forall t\in\mathbb{R},t>1,\exists n\in\mathbb{N}\ s.t.\ n\le t <n+1
+\\\therefore(1+\dfrac{1}{n+1})^n\le(1+\dfrac{1}{t})^t<(1+\dfrac{1}{n})^{n+1},\forall t\in\mathbb{R^+}$
 
-> 寫成
-> $\displaystyle\lim_{t\to\infty}(1+[\quad]_1)^{[\quad]_2}$的形式或
-> $\displaystyle\lim_{x\to{0}}(1+[\quad]_1)^{[\quad]_2}$時
-> $[\quad]_1\to{0}$，$[\quad]_2\to\infty$
+$\implies\displaystyle\lim_{n\to\infty}(1+\dfrac{1}{n+1})^n\le\lim_{t\to\infty}(1+\dfrac{1}{t})^t<\lim_{n\to\infty}(1+\dfrac{1}{n})^{n+1}
+\\\implies\dfrac{e}{1}=\displaystyle\lim_{n+1\to\infty}\dfrac{(1+\dfrac{1}{n+1})^{n+1}}{(1+\dfrac{1}{n+1})}\le\lim_{t\to\infty}(1+\dfrac{1}{t})^t<\lim_{n\to\infty}(1+\dfrac{1}{n})^n(1+\dfrac{1}{n})=e\times1$
 
-### $e$能幹嘛
+依據夾擠定理可得$\displaystyle\lim_{t\to\infty}(1+\dfrac{1}{t})^t=e$
 
-先來解這個極限:
-$\displaystyle\lim_{h\to{0}}\cfrac{2^{h}-1}{h}$
-我們發現:當$h$越來越接近$0$，例如$0.0000001$時，這個極限會趨近$0.693$
-再來解這個極限:
+2:  
+由1得$\displaystyle\lim_{t\to\infty}(1+\dfrac{1}{t})^t=e$  
+取$k=-t$，則仿1之證明可得$\displaystyle\lim_{k\to\infty}(1+\dfrac{1}{k})^k=e
+\\\implies\displaystyle\lim_{t\to-\infty}(1-\dfrac{1}{t})^{-t}=e$
 
-$\displaystyle\lim_{h\to{0}}\cfrac{3^{h}-1}{h}$
-當$h$越來越接近$0$，這個極限會趨近$1.098$
+此時取$x=\dfrac{1}{t}$，則$e=\displaystyle\lim_{\frac{1}{x}\to\pm\infty}(1+x)^{\frac{1}{x}}=\displaystyle\lim_{x\to{0}}(1+x)^{\frac{1}{x}}$  
 
-我們想知道:有沒有一個數$a$，可以使得
-$\displaystyle\lim_{h\to{0}}\cfrac{a^h-1}{h}=1=\displaystyle\lim_{h\to{0}}1$
-利用極限運算，整理一下式子可以得到
-$\displaystyle\lim_{h\to{0}}a^h=\displaystyle\lim_{h\to{0}}(h+1)$
-我們引用剛才的結論
+3:  
+先證明$\displaystyle\lim_{x\to\infty}(1+\dfrac{a}{x})^{x}=e^a$  
+$\displaystyle\lim_{x\to\infty}(1+\dfrac{a}{x})^{x}=\lim_{\frac{x}{a}\to\infty}(1+\dfrac{a}{x})^{\frac{x}{a}\times{a}}$  
+令$\dfrac{x}{a}=y$，則有$\displaystyle\lim_{y\to\infty}(1+\dfrac{1}{y})^{ya}=(\lim_{y\to\infty}(1+\dfrac{1}{y})^{y})^a=e^a$  
+故此時$\displaystyle\lim_{x\to\infty}(1+\dfrac{a}{x})^{bx}=(\displaystyle\lim_{x\to\infty}(1+\dfrac{a}{x})^{x})^b=e^{ab}$
 
-$e=\displaystyle\lim_{h\to{0}}(1+h)^{\frac{1}{h}}$
+4:  
+由$e=\displaystyle\lim_{h\to{0}}(1+h)^\frac{1}{h}$，利用極限運算，整理一下式子可以得到  
+$\displaystyle\lim_{h\to{0}}e^h=\displaystyle\lim_{h\to{0}}(h+1)$  
+$\therefore\displaystyle\lim_{h\to{0}}\dfrac{e^h-1}{h}=1$
 
-$e$正好符合
-$\therefore a=e$
-此結論為一重要結論。
-
-### $e$的特性
+### 以自然常數為底的指數函數
 
 $let\ f(x)=e^x$
 $f(x)=\dfrac{d^nf(x)}{(dx)^n},n\in{N}$
@@ -251,21 +252,20 @@ $\dfrac{df(x)}{dx}
 \\=e^x(1)
 \\=e^x$
 
-### $\ln{x}$
+重複微分$n$次皆為自己
 
-什麼是$Natural\ log?$
-$y=f(x)=e^x$
-$y=g(x)=\ln{x}=\log_{e}x$
-$f(x),g(x)$互為反函數
-$g(x)=\ln{x}$保有所有對數函數的性質
+--- 
 
-那麼如何求一般指數函數$f(x)=a^x,(a>0)$的導數呢?
-$\displaystyle\lim_{h\to{0}}\cfrac{a^{x+h}-a^x}{h}$
+### 自然對數
+
+$y=f(x)=e^x$  
+$y=g(x)=\ln{x}=\log_{e}x$  
+$f(x),g(x)$互為反函數  
+$g(x)=\ln{x}$保有所有對數函數的性質  
+
+求一般指數函數$f(x)=a^x,(a>0)$的導數  
+$\displaystyle\lim_{h\to{0}}\cfrac{a^{x+h}-a^x}{h}$  
 $\because f(x)=a^x=e^{x{\ln{a}}}
-\\\therefore\displaystyle\lim_{h\to{0}}\cfrac{a^{x+h}-a^x}{h}
-\\=\displaystyle\lim_{h\to{0}}\cfrac{e^{(x+h)\ln{a}}-e^{x\ln{a}}}{h}
-\\=f'(x)
-\\利用連鎖律:令g(x)=e^x,h(x)=x\ln{a}
 \\\therefore f'(x)=(e^{x\ln{a}})\ln{a}=\ln{a}(a^x)$
 
 ### 對數函數微積分
@@ -372,6 +372,12 @@ $y=f(x)=\csc^{-1}(x)=\{y\mid x=\csc(y), \dfrac{-\pi}{2}\le{x}\le\dfrac{\pi}{2}\}
 
 > 若$x$無範圍限制，則會形成一對多的關係，非函數關係。
 > 因此必須限定範圍。
+  
+#### 雜項  
+
+1. $\sin^{-1}x+\cos^{-1}x=\dfrac{\pi}{2}$
+2. $\sec^{-1}x+\csc^{-1}x=\dfrac{\pi}{2}$
+3. $\tan^{-1}x+\cot^{-1}x=\dfrac{\pi}{2}$
 
 反函數微分法
 
@@ -407,7 +413,11 @@ $\dfrac{d}{dx}\sin^{-1}x=\dfrac{1}{\sqrt{1-x^2}}$
 $\dfrac{d}{dx}\cos^{-1}x=\dfrac{-1}{\sqrt{1-x^2}}$
 $\dfrac{d}{dx}\tan^{-1}x=\dfrac{1}{1+x^2}$
 
-> 這些公式都是積分方法中三角代換的由來
+### 高階導數
+
+### 萊布尼茲定理
+
+### 均值定理
 
 ### 微分應用
 
@@ -444,6 +454,56 @@ $\dfrac{d}{dx}\tan^{-1}x=\dfrac{1}{1+x^2}$
 先找$f''(x)=0$，再判別有無重根
 
 即若$f''(a)=0$，且$f'''(a)\not= 0$，則$(a,f(a))$為$f(x)$的反曲點
+
+### 羅畢達定理
+
+若兩函數$f(x),g(x)$滿足以下性質：  
+$c\in{D_f\cap D_g}
+\\\displaystyle\lim_{x\to{c}}f(x)=f(c)=g(c)=\lim_{x\to{c}}g(x)=0$  
+且兩函數在$x=c$附近均可微
+則$\displaystyle\lim_{x\to{c}}\dfrac{f(x)}{g(x)}=\lim_{x\to{c}}\dfrac{f'(x)}{g'(x)}$
+
+證明：  
+$\displaystyle\lim_{x\to{c}}\dfrac{f(x)}{g(x)}=\lim_{x\to{c}}\dfrac{f(x)-f(c)}{g(x)-g(c)}=\lim_{x\to{c}}\dfrac{\dfrac{f(x)-f(c)}{x-c}}{\dfrac{g(x)-g(c)}{x-c}}=\lim_{x\to{c}}\dfrac{f'(x)}{g'(x)}$
+
+推廣：對於不定型$\dfrac{\infty}{\infty},0\times\infty,\infty^{0},1^{\infty}$此定理皆適用
+
+考慮$f(x),g(x)$分別滿足以下不同條件  
+
+1. $\displaystyle\lim_{x\to{c}}f(x)=\pm\infty,\displaystyle\lim_{x\to{c}}g(x)=\pm\infty$
+
+2. $\displaystyle\lim_{x\to{c}}f(x)=0,\displaystyle\lim_{x\to{c}}g(x)=\pm\infty$
+
+3. $\displaystyle\lim_{x\to{c}}f(x)=1,\displaystyle\lim_{x\to{c}}g(x)=\pm\infty$
+
+與其極限  
+
+1. $\displaystyle\lim_{x\to{c}}\dfrac{f(x)}{g(x)}$
+
+2. $\displaystyle\lim_{x\to{c}}f(x)g(x)$
+
+3. $\displaystyle\lim_{x\to{c}}(f(x))^{g(x)}$
+
+則對於條件1.與極限1.而言：  
+$\displaystyle\lim_{x\to{c}}\dfrac{f(x)}{g(x)}=\displaystyle\lim_{x\to{c}}\dfrac{\dfrac{1}{g(x)}}{\dfrac{1}{f(x)}}$，此時令二新函數$h(x)=\dfrac{1}{g(x)},i(x)=\dfrac{1}{f(x)}$  
+而$\because\displaystyle\lim_{x\to{c}}f(x)=\pm\infty,\displaystyle\lim_{x\to{c}}g(x)=\pm\infty
+\\\therefore\displaystyle\lim_{x\to{c}}h(x)=\lim_{x\to{c}}i(x)$  
+則$\displaystyle\lim_{x\to{c}}\dfrac{h(x)}{i(x)}$為$\dfrac{0}{0}$型
+
+對於條件2.與極限2.而言：  
+$\displaystyle\lim_{x\to{c}}f(x)g(x)=\lim_{x\to{c}}\dfrac{f(x)}{\dfrac{1}{g(x)}}$  
+令$h(x)=\dfrac{1}{g(x)}$  
+$\because\displaystyle\lim_{x\to{c}}f(x)=0,\displaystyle\lim_{x\to{c}}g(x)=\pm\infty
+\\\therefore\displaystyle\lim_{x\to{c}}h(x)=0
+\\\implies\lim_{x\to{c}}\dfrac{f(x)}{h(x)}$為$\dfrac{0}{0}$型
+
+對於條件2與極限3.而言：
+
+$\displaystyle\lim_{x\to{c}}(g(x))^{f(x)}=\lim_{x\to{c}}e^{(\ln{g(x)})f(x)}$  
+此時令$h(x)=\ln{g(x)}$但$g(x)>0$則$\displaystyle\lim_{x\to{c}}h(x)=\displaystyle\lim_{x\to{c}}\ln{g(x)}=\infty$  
+可發現指數為$0\times\infty$型，故可化簡為$\dfrac{0}{0}$型
+
+
 
 ## 積分Intergration
 
@@ -735,3 +795,10 @@ $|\displaystyle\int_{a}^{b}\pi{y^2}dx|$
 $|\displaystyle\int_{a}^{b}\pi(f(x)-g(x))^2dx|$
 
 ### 求旋轉體表面積
+
+求$f(x)$繞$x$軸與$(x-a)(x-b)=0$所形成的旋轉體表面積$A_r$  
+面積就是弧長的積分  
+因此先將弧長算出後再求出旋轉體積分  
+$|\displaystyle\int_{a}^{b} 2\pi f(x) dl|$  
+其中$dl=\sqrt{1+(\dfrac{dy}{dx})^2}dx$  
+故$A_r=|\displaystyle\int_{a}^{b} 2\pi f(x) \sqrt{1+(f'(x))^2}dx|$  
