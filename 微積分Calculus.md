@@ -254,7 +254,7 @@ $\dfrac{df(x)}{dx}
 
 重複微分$n$次皆為自己
 
---- 
+---  
 
 ### 自然對數
 
@@ -415,9 +415,35 @@ $\dfrac{d}{dx}\tan^{-1}x=\dfrac{1}{1+x^2}$
 
 ### 高階導數
 
+表示法：  
+$y=f(x)$的$n$階導函數表示為$y^{(n)}=\dfrac{d^n}{dx^n}f(x)=f^{(n)}(x)$  
+
+求法：看出規律，寫成一般項，搭配數列求一般項的技巧。
+
+例：$y=f(x)=\sin{x}$，則$y^{(n)}=?$  
+解：  
+$y'=\cos{x},y''=-\sin{x},y'''=-\cos{x},y''''=\sin{x}$形成循環  
+而$\cos{x}=\sin{(x+\dfrac{\pi}{2})},-\sin{x}=\cos{(x+\dfrac{\pi}{2})},-\cos{x}=-\sin{(x+\dfrac{\pi}{2})}\dots$  
+因此可得$y^{(n)}=\sin{(x+\dfrac{n\pi}{2})}$
+
 ### 萊布尼茲定理
 
 ### 均值定理
+
+均值定理事實上有三個，分別為洛爾定理，拉格朗日定理，柯西均值定理  
+以下分別以定理A,B,C描述  
+
+定理A敘述：  
+設函數$f(x)$在$[a,b]$上連續，且在$(a,b)$內各點皆可微  
+若$f(a)=f(b)$則在$(a,b)$中必存在一數$x_0$，$a<x_0<b$，使得$f'(x_0)=0$
+
+定理B敘述：
+若函數$f(x)$在$[a,b]$上連續，且在$(a,b)$內各點皆可微  
+則$\exists c\in(a,b)\ s.t.\ f'(c)=\dfrac{f(b)-f(a)}{b-a}$
+
+定理C敘述：
+設函數$f(x)$，$g(x)$皆在$[a,b]$上連續，且在$(a,b)$內各點皆可微  
+則$\exists\xi\in(a,b)\ s.t.\ \dfrac{f(b)-f(a)}{g(b)-g(a)}=\dfrac{f'(\xi)}{g'(\xi)}$
 
 ### 微分應用
 
@@ -501,9 +527,7 @@ $\because\displaystyle\lim_{x\to{c}}f(x)=0,\displaystyle\lim_{x\to{c}}g(x)=\pm\i
 
 $\displaystyle\lim_{x\to{c}}(g(x))^{f(x)}=\lim_{x\to{c}}e^{(\ln{g(x)})f(x)}$  
 此時令$h(x)=\ln{g(x)}$但$g(x)>0$則$\displaystyle\lim_{x\to{c}}h(x)=\displaystyle\lim_{x\to{c}}\ln{g(x)}=\infty$  
-可發現指數為$0\times\infty$型，故可化簡為$\dfrac{0}{0}$型
-
-
+可發現指數為$0\times\infty$型，故可化簡為$\dfrac{0}{0}$型  
 
 ## 積分Intergration
 
@@ -565,9 +589,9 @@ $\displaystyle\int_{a}^{b}f(x)dx=\lim_{\delta\to 0}\sum^{n}_{k=1}f(\varepsilon_k
 因為已知$\displaystyle\int_a^bf(x)dx=F(b)-F(a)$
 因此$\displaystyle\int^{x}_{a}f(x)dx=F(x)-F(a)$
 而當下界也不確定時，即$\displaystyle\int f(x)dx=F(x)+C$
-微積分基本定理從而得證。
+微積分基本定理從而得證。  
 
-### 運算性質
+### 運算性質  
 
 1. $\displaystyle\int_{a}^{b}f(x)dx=\int^c_af(x)dx+\int^b_cf(x)dx$
 2. $\displaystyle\int_{a}^{b}f(x)dx=-\int_b^af(x)dx$
@@ -696,13 +720,25 @@ $\displaystyle\therefore\int\sin^{n}xdx\\=-\sin^{n-1}x\cos{x}+(n-1)\int\cos^2{x}
 
 其餘可利用平方關係與以下公式化簡
 
-1. $\sin^{n}x\cos^{m}x$   
+1. $\sin^{n}x\cos^{m}x$
+
 先討論奇偶  
-一奇一偶 奇減一再分部  
+一奇一偶 奇減一  
 二偶 用平方換  
-二奇 cos減一再分部  
-2. $\sec^{n}x\tan^{m}x$
-3. $\csc^{n}x\cot^{m}x$
+二奇 cos減一  
+次方相同時 二倍角  
+$\displaystyle\int\sin^{2n+1}x\cos^{2m}xdx=-\int\sin^{2n}x\cos^{2m}xd\cos{x}=-\int(1-\cos^{2}x)^n\cos^{2m}xd\cos{x}$  
+令$u=\cos{x}$，即求$\displaystyle\int(1-u^2)^nu^{2m}du$  
+以二項式定理展開後得：  
+$-\displaystyle\int[\sum_{k=0}^{n}(-1)^k\binom{n}{k}u^{2m+2k}]du
+\\=\sum_{k=0}^{n}[(-1)^{k+1}\binom{n}{k}\int{u^{2m+2k}}du]
+\\=\sum_{k=0}^{n}[(-1)^{k+1}\binom{n}{k}\dfrac{\cos^{2m+2k+1}x}{2m+2k+1}]+C
+\\\therefore\displaystyle\int\sin^{2n+1}x\cos^{2m}xdx=\sum_{k=0}^{n}[(-1)^{k+1}\binom{n}{k}\dfrac{\cos^{2m+2k+1}x}{2m+2k+1}]+C$  
+$\displaystyle\int\sin^{2n}x\cos^{2m}x=\int(1-\cos^{2}x)^n\cos^{2m}xdx=\int\sum_{k=0}^{n}(-1)^k\cos^{2k+2m}xdx$  
+再使用高次三角函數漸化式化簡。  
+2. $\sec^{n}x\tan^{m}x$  
+$e^x$  
+3. $\csc^{n}x\cot^{m}x$  
 
 多種三角函數合在一起時可使用$\tan{2x}$萬能公式
 化為部分分式再積分
@@ -711,7 +747,6 @@ $\displaystyle\therefore\int\sin^{n}xdx\\=-\sin^{n-1}x\cos{x}+(n-1)\int\cos^2{x}
 
 $\displaystyle\int x^ne^{mx}dx=\sum^{n}_{k=0}\dfrac{(-1)^{k}}{m^{k+1}}\binom{n}{k}k!x^{n-k}e^{mx}+C,n,m\in\mathbb{N}$  
 $\displaystyle\int\sin{ax}\cos{bx}dx=\dfrac{-1}{2}(\dfrac{\cos{((a+b)x)}}{a+b}+\dfrac{\cos{((a-b)x)}}{a-b})+C,a,b\in\mathbb{R}\land a^2+b^2\not=0\land a\not=b$  
-
 
 ### 積分應用
 
@@ -735,7 +770,7 @@ $\displaystyle\int^{b}_{a}|f(x)|dx$
 求$f(x)=\sqrt{(x+1)(x-1)}$與$\begin{cases}(x-3)(x-6)=0\\y=0\end{cases}$所圍成的圖形面積
 
 先作圖，確定圖形形狀，上下界之間有根需分段積分，負區變號
-![](https://i.imgur.com/BDoPh36.png)
+![what](https://i.imgur.com/BDoPh36.png)
 
 再寫積分式
 
@@ -766,7 +801,7 @@ $|\displaystyle\int^{b}_{a}A(x)dx|$
 
 $pf:$
 
-![](https://i.imgur.com/V9VDcFe.png)
+![what](https://i.imgur.com/V9VDcFe.png)
 
 ### 求旋轉體體積
 
@@ -777,7 +812,7 @@ $pf:$
 利用定積分求體積的方法，先寫出面積函數，再做積分  
 面積函數為每個圓盤的面積，即以$|y|$值為半徑的圓面積$\pi{y^2}$  
 則函數$y=f(x)$繞$x$軸旋轉與$(x-a)(x-b)=0$兩平面所圍成之體積為  
-$|\displaystyle\int_{a}^{b}\pi{y^2}dx|$
+$|\displaystyle\int_{a}^{b}\pi{y^2}dx|$  
 
 2. 套筒法
 
